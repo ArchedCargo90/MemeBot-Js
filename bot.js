@@ -33,20 +33,11 @@ bot.on('message', message => {
   var args = message.content.split(/[ ]+/);
   if (message.content === prefix + 'ping') {
       startTime = Date.now();
-      message.channel.sendMessage("Unloading Dank Memes..").then((message) => {
+      message.channel.sendMessage("Summoning the Lords of memes..").then((message) => {
         endTime = Date.now();
           message.edit("The Lords of memes have pinged you... // " + Math.round(endTime - startTime) + " ms");
       });
    }
-
-   if (commandIs("announce", message)) {
-    if(args.length === 1){
-        message.channel.sendMessage('Announce in this servers announcements Channel : ``mb!announce <message>``')
-      } else {
-        bot.sendMessage('announcements')
-        message.channel.sendMessage('Message sent to Developer.')
-      }
-  }
 
    if (commandIs("notifydev", message)) {
     if(args.length === 1){
@@ -64,7 +55,7 @@ bot.on('message', message => {
       bot.user.setGame(game);
       message.channel.sendMessage('Successfully changed the game to: ' + '``' + game + '``');
     } else {
-      message.channel.sendMessage('Hell no nigga, you are not the owner of the bot C:')
+      message.channel.sendMessage('Hell no, you are not the owner of the bot :/')
     }
   }
 
@@ -82,8 +73,6 @@ bot.on('message', message => {
       'triggered | triggered boi!\n'+
       'mlg | mlg grandma\n'+
       'spam | sends you spam!\n'+
-      'kick | kicks a user.\n'+
-      'announce | Announces in the servers announcements channel,(Must have a channel called "announcements")\n'+
       '8ball | ask 8ball a question!\n```');
   }
 
@@ -93,75 +82,18 @@ bot.on('message', message => {
   }
 
   if (message.content === prefix + 'info') {
-    message.channel.sendMessage('``Dank af discord bot made by LightWarp#5690``\n ```Version: 1.5```');
+    message.channel.sendMessage('``Dank af discord bot made by LightWarp#5690``\n ```Version: 0.1 BETA```');
   }
 
-  if (message.content === prefix + 'ayylmao') {
-    message.channel.sendFile('ayylmao.gif');
-  }
-
-  if (message.content === prefix + 'spam') {
-    message.channel.sendFile('spam.png');
-  }
-
-  //if (message.content === prefix + 'tag')
-
-  /**if (message.content.startsWith('mb!ban')) {
-    if(message.member.roles.has(role.id)) {
-      console.log(`Yay, the author of the message has the role!`);
-    } else {
-      console.log(`Nope, noppers, nadda.`);
-    }
-    var user = message.content.replace("mb!ban", "");
-    user.Discord.ban(user);
-    message.channel.sendMessage('User Successfully banned!');
-  }**/
 
   if (message.content.startsWith('mb!say')) {
-    if(hasRole(message.member, modrole) || hasRole(message.member, adminrole)) {
+    //if(hasRole(message.member, modrole) || hasRole(message.member, adminrole)) {
       var msg = message.content.replace("mb!say", "");
       message.delete();
       message.channel.sendMessage(msg);
-    } else {
-      message.channel.sendMessage('You dont have the ``Mods`` Role')
-    }
-  }
-
-  if (message.content.startsWith(prefix + "kick")) {
-  // I'll make a code example on how to check if the user is allowed, one day!
-    let userToKick = message.mentions.users.first();
-    //we need to get a GuildMember object, mentions are only users. Then, we kick!
-    message.guild.member(userToKick).kick();
-  // see I even catch the error!
-  }
-
-  if (commandIs("kick", message)) {
-    if(hasRole(message.member, modrole) || hasRole(message.member, adminrole)) {
-      if(args.length === 1){
-        message.channel.sendMessage('Define a user to kick. Usage: ``mb!kick <username>')
-      } else {
-        message.guild.member(message.mentions.users.first()).kick();
-        message.channel.sendMessage('User Successfully Kicked.')
-      }
-    }
-  }
-
-  if (commandIs('purge', message)) {
-    if(hasRole(message.member, modrole) || hasRole(message.member, adminrole)) {
-      if(args.length >= 3) {
-        message.channel.sendMessage('Usage: ``mb!purge <number of messages>``')
-      } else {
-        var msg;
-        if (args.length === 1) {
-          msg = 2;
-        } else {
-          msg = parseInt(args[1] + 1)
-        }
-        message.channel.fetchMessage({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-      }
-    } else {
-      message.channel.sendMessage('You dont have the ``Mods`` Role')
-    }
+    //} else {
+      //message.channel.sendMessage('You dont have the ``Mods`` Role')
+    //}
   }
 
 
@@ -170,25 +102,32 @@ bot.on('message', message => {
       var answers = [
       'Maybe.', 'Lol no.', 'I really hope so.', 'Not in your wildest dreams.',
       'There is a good chance.', 'Quite likely.', 'I think so.', 'I hope not.',
-      'I hope so.', 'Never!', 'Fuhgeddaboudit.', 'Ahaha! Really?!?', 'Pfft.',
+      'I hope so.', 'Wtf no!', 'Fuhgeddaboudit.', 'Ahaha! Really?!?', 'Pfft.',
       'Sorry, bby.', 'fuck, yes.', 'Hell to the no.', 'ehhhhhh, i dont know.',
       'The future is uncertain.', 'I would rather not say.', 'Who cares?',
       'Possibly.', 'Never, ever, ever.', 'There is a small chance.', 'Yes!'];
       var answer = answers[Math.floor(Math.random() * answers.length)];
     } else {
-      message.channel.sendMessage('That is not a valid questiont')
+      message.channel.sendMessage('Is that a question?')
     }
   message.channel.sendMessage(answer);
   } 
 
   if (message.content === prefix + 'cykablyat') {
-    message.channel.sendFile('cykablyat.png');
+    message.channel.sendFile('img/cykablyat.png');
   }
 
   if (message.content === prefix + 'triggered') {
-    message.channel.sendFile('triggered.png');
+    message.channel.sendFile('img/triggered.png');
   }
   
+  if (message.content === prefix + 'ayylmao') {
+    message.channel.sendFile('img/ayylmao.gif');
+  }
+
+  if (message.content === prefix + 'spam') {
+    message.channel.sendFile('img/spam.png');
+  }
 
 });
 bot.login(config.token);
