@@ -71,6 +71,7 @@ bot.on('message', message => {
       'cykablyat | cykablyat meme...\n'+
       'help | shows this message\n'+
       'triggered | triggered boi!\n'+
+      'randommeme | Posts a random ass meme\n'+
       'mlg | mlg grandma\n'+
       'spam | sends you spam!\n'+
       '8ball | ask 8ball a question!\n```');
@@ -82,7 +83,7 @@ bot.on('message', message => {
   }
 
   if (message.content === prefix + 'info') {
-    message.channel.sendMessage('``Dank af discord bot made by LightWarp#5690``\n ```Version: 0.1 BETA```');
+    message.channel.sendMessage('``Dank af discord bot made by LightWarp#5690``\n ```Version: 0.2 BETA```');
   }
 
 
