@@ -95,8 +95,69 @@ bot.on('message', message => {
       //message.channel.sendMessage('You dont have the ``Mods`` Role')
     //}
   }
+  if (message.content.startsWith('mb!randommeme')) {
+      var answers = [
+        //STOLEN MEMES :>
+      'http://i.imgur.com/esZlkxd.jpg', 
+      'http://i.imgur.com/hPW0SKr.jpg', 
+      'http://i.imgur.com/Pqprl6S.jpg', 
+      'http://i.imgur.com/2UsbZdM.jpg',
+      'http://i.imgur.com/Ub93dy4.jpg', 
+      'http://i.imgur.com/1WssNcV.jpg', 
+      'http://i.imgur.com/yGr52CL.jpg', 
+      'http://i.imgur.com/mTD0vZh.jpg',
+      'http://i.imgur.com/BtBCqMg.jpg', 
+      'http://i.imgur.com/cYLudbe.jpg', 
+      'http://i.imgur.com/xdZa4Nj.jpg', 
+      'http://i.imgur.com/Kb04V4W.jpg', 
+      'http://i.imgur.com/5OSaf9u.png',
+      'http://i.imgur.com/zqqu4Vi.jpg', 
+      'http://i.imgur.com/uIJjMXA.jpg', 
+      'http://i.imgur.com/HCfN7P8.jpg', 
+      'http://i.imgur.com/cE21Jdc.jpg',
+      'http://i.imgur.com/IiA4fRm.jpg', 
+      'http://i.imgur.com/iKxAaq0.jpg', 
+      'http://i.imgur.com/XEicSEg.jpg',
+      'http://i.imgur.com/36yEXvC.jpg', 
+      'http://i.imgur.com/vls4AR7.jpg', 
+      'http://i.imgur.com/hu7jZr6.png',
+      'http://i.imgur.com/gCJrl7e.jpg', 
+      'http://i.imgur.com/K9Oetiw.png',
+      'http://i.imgur.com/i6UWgIg.jpg',
+      'http://i.imgur.com/vWjSwqf.jpg',
+      'http://i.imgur.com/YTCAK51.jpg',
+      'http://i.imgur.com/UMLm1mL.jpg',
+      'http://i.imgur.com/68Zr7rs.jpg',
+      'http://i.imgur.com/qnqITS3.jpg',
+      'http://i.imgur.com/vOK9gcj.jpg',
+      'http://i.imgur.com/qqS1oWu.jpg',
+      'http://i.imgur.com/d3Wbs3l.jpg',
+      'http://i.imgur.com/L5yUVYw.jpg',
+      'http://i.imgur.com/GKnXFsQ.jpg',
+      'http://i.imgur.com/Wf733vC.png',
+      'http://i.imgur.com/tKQuOEe.jpg',
+      'http://i.imgur.com/nf5ncDG.png',
+      'http://i.imgur.com/oJVK22f.jpg',
+      'http://i.imgur.com/3TQsgvH.jpg',
+      'http://i.imgur.com/TuMP4qQ.png',
+      'http://i.imgur.com/gPCXHzH.jpg',
+      'http://i.imgur.com/5UoZyvQ.png',
+      'http://i.imgur.com/SzyiCeS.jpg',
+      'http://i.imgur.com/rJ8AnPx.jpg',
+      'http://i.imgur.com/9PhB6tR.jpg',
+      'http://i.imgur.com/dWwpKhz.jpg',
+      'http://i.imgur.com/1DxoHS1.jpg',
+      'http://i.imgur.com/T5hphPD.jpg',
+      'http://i.imgur.com/D1hMVa3.jpg',
+      'http://i.imgur.com/YlBWOUx.jpg',
+      'http://i.imgur.com/Hs0bNbm.jpg',
+      'http://i.imgur.com/o14goLr.jpg'
 
 
+      ];
+      var answer = answers[Math.floor(Math.random() * answers.length)];
+    message.channel.sendMessage(answer);
+  }
   if (message.content.startsWith('mb!8ball')) {
     if ( message.content.endsWith('?')) {
       var answers = [
