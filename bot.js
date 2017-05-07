@@ -71,7 +71,7 @@ bot.on('message', message => {
   if (message.content === prefix + 'help') {
     message.channel.sendMessage('Check your DMs! :envelope_with_arrow:')
     message.author.sendMessage('***My commands are:***\n' +
-      '```ping | the Shadows pings you\n' +
+      '```ping | the Lords of Memes pings you\n' +
       'info | gives you the bot info\n' +
       'inviteme | gives you the invite link for the bot\n'+
       'setgame | changes the bots game (Only for Bot Owners)\n'+
@@ -83,6 +83,7 @@ bot.on('message', message => {
       'mlg | mlg grandma\n'+
       'spam | sends you spam!\n'+
       'kick | kicks a user.\n'+
+      'announce | Announces in the servers announcements channel,(Must have a channel called "announcements")\n'+
       '8ball | ask 8ball a question!\n```');
   }
 
