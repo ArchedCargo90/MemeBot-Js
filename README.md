@@ -1,6 +1,8 @@
 # MemeBot-Js
 A Funny Discord Bot Created in Node.Js
 
+Version 0.1 BETA 
+
 Installation:
 Must have Node.js 
 Having Nodemon is optional, to NOT use Nodemon, change it to "node bot.js" instead of "nodemon bot.js"
