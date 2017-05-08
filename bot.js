@@ -7,9 +7,11 @@ version = '0.2 BETA'
 modrole = 'Mods'
 adminrole = 'Admins'
 game = 'Creamy Memes :D'
+var cleverON = false;
+var RESTRICT_CLEVERBOT_TO_CHANNEL = false
 var cleverbot = require("cleverbot.io");
 var notifydevchannel = 302432701108191232;
-var cleverbot = new cleverbot(config.cleverbotapiuser,config.cleverbotapikey);
+var clever = new cleverbot(config.cleverbotapiuser,config.cleverbotapikey);
 
 function commandIs(str, msg) {
   return msg.content.startsWith(prefix + str);
@@ -30,7 +32,7 @@ function hasRole(mem, role) {
 bot.on('ready', () => {
   bot.user.setGame(game);
   console.log('Hi');
-  cleverbot.setNick("memebot");
+  
 });
 
 bot.on('message', message => {
@@ -41,15 +43,25 @@ bot.on('message', message => {
         endTime = Date.now();
           message.edit("The Lords of memes have pinged you... // " + Math.round(endTime - startTime) + " ms");
       });
-   }
+  }
+  if (cleverON) {
+        clever.ask(message, function (err, response) {
+            message.channel.sendMessage({
+                message: response
+            });
+        });
+    }
 
-   /**if (message.content.startsWith('mb!talk')) {
-      var msg = message.content.replace("mb!say", "");
-      bot.create(function (err, session) {
-        // session is your session name, it will either be as you set it previously, or cleverbot.io will generate one for you
-
-        // Woo, you initialized cleverbot.io.  Insert further code here
-      });
+    /**if (commandIs("cleverbot", message)) {
+      if (args.length === 1) {
+        message.channel.sendMessage("```Incorrect Syntax! Command usage: mb!cleverbot <on | off>```")
+      } else if ((args.length === 2) && (message = 'on')) {
+        cleverON = true;
+      } else if ((args.length === 2) && (message = 'on')) {
+        cleverON = false;
+      } else {
+        message.channel.sendMessage("```Incorrect Syntax! Command usage: mb!cleverbot <on | off>```")
+      }
     }**/
     //This command is broken. lolno
    /**if (commandIs("notifydev", message)) {
@@ -62,7 +74,7 @@ bot.on('message', message => {
    }**/
 
 //Setgame Command
-  if (message.content.startsWith('mb!setgame')) {
+   if (message.content.startsWith('mb!setgame')) {
     if((message.author.id === config.ownerID) || (message.author.id === config.coownerID1) || (message.author.id === config.coownerID2) || (message.author.id === config.coownerID3)) {
       game = message.content.replace("mb!setgame", "");
       bot.user.setGame(game);
