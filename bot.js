@@ -3,10 +3,13 @@ const bot = new Discord.Client();
 const config = require('./config.json');
 const prefix = 'mb!';
 const sayvar = ''
+version = '0.2 BETA'
 modrole = 'Mods'
 adminrole = 'Admins'
 game = 'Creamy Memes :D'
+var cleverbot = require("cleverbot.io");
 var notifydevchannel = 302432701108191232;
+var cleverbot = new cleverbot(config.cleverbotapiuser,config.cleverbotapikey);
 
 function commandIs(str, msg) {
   return msg.content.startsWith(prefix + str);
@@ -27,6 +30,7 @@ function hasRole(mem, role) {
 bot.on('ready', () => {
   bot.user.setGame(game);
   console.log('Hi');
+  cleverbot.setNick("memebot");
 });
 
 bot.on('message', message => {
@@ -39,23 +43,32 @@ bot.on('message', message => {
       });
    }
 
-   if (commandIs("notifydev", message)) {
+   /**if (message.content.startsWith('mb!talk')) {
+      var msg = message.content.replace("mb!say", "");
+      bot.create(function (err, session) {
+        // session is your session name, it will either be as you set it previously, or cleverbot.io will generate one for you
+
+        // Woo, you initialized cleverbot.io.  Insert further code here
+      });
+    }**/
+    //This command is broken. lolno
+   /**if (commandIs("notifydev", message)) {
     if(args.length === 1){
         message.channel.sendMessage('Send a message to the Developers (Dont abuse or get blacklisted.) : ``mb!notifydev <message>``')
       } else {
         bot.sendMessage('302432701108191232', message)
         message.channel.sendMessage('Message sent to Developer.')
       }
-  }
+   }**/
 
 //Setgame Command
   if (message.content.startsWith('mb!setgame')) {
-    if((message.author.id === config.ownerID) || (message.author.id === config.coownerID1)) {
+    if((message.author.id === config.ownerID) || (message.author.id === config.coownerID1) || (message.author.id === config.coownerID2) || (message.author.id === config.coownerID3)) {
       game = message.content.replace("mb!setgame", "");
       bot.user.setGame(game);
       message.channel.sendMessage('Successfully changed the game to: ' + '``' + game + '``');
     } else {
-      message.channel.sendMessage('Hell no, you are not the owner of the bot :/')
+      message.channel.sendMessage('Nope!, you are not the owner of the bot :/')
     }
   }
 
@@ -83,7 +96,7 @@ bot.on('message', message => {
   }
 
   if (message.content === prefix + 'info') {
-    message.channel.sendMessage('``Dank af discord bot made by LightWarp#5690``\n ```Version: 0.2 BETA```');
+    message.channel.sendMessage('``Dank af discord bot made by LightWarp#5690``\n ```Version: '+version+'```');
   }
 
 
@@ -159,6 +172,7 @@ bot.on('message', message => {
       var answer = answers[Math.floor(Math.random() * answers.length)];
     message.channel.sendMessage(answer);
   }
+  
   if (message.content.startsWith('mb!8ball')) {
     if ( message.content.endsWith('?')) {
       var answers = [
