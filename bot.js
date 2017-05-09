@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const config = require('./config.json');
 const prefix = 'mb!';
 const sayvar = ''
+const YTDL = require("ytdl-core");
 version = '0.2 BETA'
 modrole = 'Mods'
 adminrole = 'Admins'
@@ -12,7 +13,19 @@ var RESTRICT_CLEVERBOT_TO_CHANNEL = false
 var cleverbot = require("cleverbot.io");
 var notifydevchannel = 302432701108191232;
 var clever = new cleverbot(config.cleverbotapiuser,config.cleverbotapikey);
+var servers = {};
+function play(connection, message) {
+  var server = servers[message.guild.id];
 
+  server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+
+  server.queue.shift();
+  
+  server.dispatcher.on("end", function() {
+      if (server.queue[0]) play(connection, message);
+      else connection.disconnect();
+  });
+}
 function commandIs(str, msg) {
   return msg.content.startsWith(prefix + str);
 }
@@ -44,13 +57,13 @@ bot.on('message', message => {
           message.edit("The Lords of memes have pinged you... // " + Math.round(endTime - startTime) + " ms");
       });
   }
-  if (cleverON) {
+  /**if (cleverON) {
         clever.ask(message, function (err, response) {
             message.channel.sendMessage({
                 message: response
             });
         });
-    }
+    }**/
 
     /**if (commandIs("cleverbot", message)) {
       if (args.length === 1) {
@@ -71,6 +84,41 @@ bot.on('message', message => {
         bot.sendMessage('302432701108191232', message)
         message.channel.sendMessage('Message sent to Developer.')
       }
+   }**/
+
+   /**if (message.content.startsWith('mb!play')) {
+     vidurl = message.content.replace("mb!play", "");
+     if (!args[1]) {
+        message.channel.sendMessage("```Please Proide a Youtube Link!```");
+        return;
+     }
+     if (!message.member.voiceChannel) {
+       message.channel.sendMessage("You aren't in a voice channel ._.");
+       return;
+     }
+     if (!servers[message.guild.id]) servers[message.guild.id] = {
+       queue: []
+     }
+     var server = servers[message.guild.id];
+
+     if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+        play(connection, vidurl);
+     });
+   }
+
+   if (commandIs('skip', message)){
+     if(args[1]) {
+       var server = servers[message.guild.id];
+
+       if (server.dispatcher) server.dispatcher.end();
+     }
+   }
+   if (commandIs('stop', message)) {
+     var server = servers[message.guild.id];
+
+     if (message.guild.voiceConnection){
+       message.guild.voiceConnection.disconnect();
+     }
    }**/
 
 //Setgame Command
@@ -121,7 +169,7 @@ bot.on('message', message => {
       //message.channel.sendMessage('You dont have the ``Mods`` Role')
     //}
   }
-  if (message.content.startsWith('mb!randommeme')) {
+  if (message.content === prefix + 'randommeme') {
       var answers = [
         //STOLEN MEMES :>
       'http://i.imgur.com/esZlkxd.jpg', 
