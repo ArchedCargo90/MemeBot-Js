@@ -123,12 +123,21 @@ bot.on('message', message => {
 
 //Setgame Command
    if (message.content.startsWith('mb!setgame')) {
-    if((message.author.id === config.ownerID) || (message.author.id === config.coownerID1) || (message.author.id === config.coownerID2) || (message.author.id === config.coownerID3)) {
+    if((message.author.id === config.ownerID) || (message.author.id === config.coownerID1) || (message.author.id === config.coownerID2) || (message.author.id === config.coownerID3) || (message.author.id === config.coownerID4) || (message.author.id === config.coownerID5)) {
       game = message.content.replace("mb!setgame", "");
       bot.user.setGame(game);
       message.channel.sendMessage('Successfully changed the game to: ' + '``' + game + '``');
     } else {
-      message.channel.sendMessage('Nope!, you are not the owner of the bot :/')
+      message.channel.sendMessage('Nope!, you are not an owner of the bot :/')
+    }
+  }
+
+  if (message.content === prefix + 'shutdown') {
+    if((message.author.id === config.ownerID) || (message.author.id === config.coownerID1) || (message.author.id === config.coownerID2) || (message.author.id === config.coownerID3) || (message.author.id === config.coownerID4) || (message.author.id === config.coownerID5)) {
+      message.channel.sendMessage('bye :hand_splayed::skin-tone-3:')
+      bot.destroy()
+    } else {
+      message.reply('No, Bad!')
     }
   }
 
