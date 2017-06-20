@@ -34,6 +34,7 @@ function pluck(array) {
   return array.map(function(item) { return item["name"]; });
 }
 
+
 function hasRole(mem, role) {
   if(pluck(mem.roles).includes(role)) {
     return true;
@@ -120,6 +121,7 @@ bot.on('message', message => {
        message.guild.voiceConnection.disconnect();
      }
    }**/
+
 
 //Setgame Command
    if (message.content.startsWith('mb!setgame')) {
@@ -234,7 +236,12 @@ bot.on('message', message => {
       'http://i.imgur.com/D1hMVa3.jpg',
       'http://i.imgur.com/YlBWOUx.jpg',
       'http://i.imgur.com/Hs0bNbm.jpg',
-      'http://i.imgur.com/o14goLr.jpg'
+      'http://i.imgur.com/o14goLr.jpg',
+      'http://i.imgur.com/TFIA8ds.jpg',
+      'http://i.imgur.com/cIiqY8w.jpg',
+      'http://i.imgur.com/5dNlLf6.jpg',
+      'http://i.imgur.com/ZABeZC8.jpg',
+      'http://i.imgur.com/BDvkS64.jpg'
 
 
       ];
