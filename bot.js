@@ -285,15 +285,17 @@ bot.on('message', message => {
    var msg = message.content.replace("mb!warn", "");
    let discrim = message.mentions.users.first();
    message.delete();
-   discrim.sendMessage(discrim.username + " you have been warned in General Gaming, reason: " + msg);
+   discrim.sendMessage(discrim.username + " you have been warned in "+ Server.name+ ", reason: " + msg);
    message.channel.sendMessage("User has been **successfuly** warned!");
-   console.log(message.author.username + " tried to execute in General Gaming gg!warn and it successfuly warned the user: " + discrim.username + " with the reason: " + msg);
+   console.log(message.author.username + " tried to execute in General Gaming mb!warn and it successfuly warned the user: " + discrim.username + " with the reason: " + msg);
        } else {
       message.reply('You arent the owner of the bot to do that!');
       console.log(message.author.username + " tried to execute in General Gaming gg!warn but it failed.")
     }
          if (message.content === 'abcdefghijklmnopqrstuvwxyz') {
     message.reply(" just earned the achievement `The Alphabet` :confetti_ball: ");
+  }
+
   }
 
 });
