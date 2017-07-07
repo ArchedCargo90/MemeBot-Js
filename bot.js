@@ -60,8 +60,8 @@ bot.on('message', message => {
   }
  
 
-//Setgame Command
-   if (message.content.startsWith('mb!setgame')) {
+  //Setgame Command
+  if (message.content.startsWith('mb!setgame')) {
     if((message.author.id === config.ownerID) || (message.author.id === config.coownerID1) || (message.author.id === config.coownerID2) || (message.author.id === config.coownerID3) || (message.author.id === config.coownerID4) || (message.author.id === config.coownerID5)) {
       game = message.content.replace("mb!setgame", "");
       bot.user.setGame(game);
@@ -217,23 +217,25 @@ bot.on('message', message => {
   if (message.content === prefix + 'spam') {
     message.channel.sendFile('img/spam.png');
   }
-    if (message.content.startsWith('mb!warn')) {
+  //Warn Command
+  if (message.content.startsWith('mb!warn')) {
   if((message.author.id === config.ownerID) || (message.author.id === config.owner2ID) || (message.author.id === config.owner3ID)) {
    var msg = message.content.replace("mb!warn", "");
    let discrim = message.mentions.users.first();
    message.delete();
    discrim.sendMessage(discrim.username + " you have been warned in "+ Guild.server.name+ ", reason: " + msg);
    message.channel.sendMessage("User has been **successfuly** warned!");
-   console.log(message.author.username + " tried to execute in General Gaming mb!warn and it successfuly warned the user: " + discrim.username + " with the reason: " + msg);
-       } else {
+   console.log(message.author.username + " tried to execute in General Gaming"+ Guild.server.name +" mb!warn and it successfuly warned the user: " + discrim.username + " with the reason: " + msg);
+      } else {
       message.reply('You arent the owner of the bot to do that!');
-      console.log(message.author.username + " tried to execute in General Gaming gg!warn but it failed.")
-    }
-         if (message.content === 'abcdefghijklmnopqrstuvwxyz') {
-    message.reply(" just earned the achievement `The Alphabet` :confetti_ball: ");
+      console.log(message.author.username + " tried to execute in General Gaming mb!warn but it failed.")
+      }
   }
-
+  //press f to pay respects
+  if (message.content === prefix + 'f') {
+              var f = Math.floor((Math.random() * 9999) + 1)
+              let User = message.author
+              message.channel.send("You know what? " + User + "just paid their respects! respects paid: ``" + f + "``"); 
   }
-
 });
 bot.login(config.token);
