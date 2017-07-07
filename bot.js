@@ -278,9 +278,9 @@ bot.on('message', message => {
   if (message.content === prefix + 'spam') {
     message.channel.sendFile('img/spam.png');
   }
-    if (message.content.startsWith('gg!warn')) {
+    if (message.content.startsWith('mb!warn')) {
   if((message.author.id === config.ownerID) || (message.author.id === config.owner2ID) || (message.author.id === config.owner3ID)) {
-   var msg = message.content.replace("gg!warn", "");
+   var msg = message.content.replace("mb!warn", "");
    let discrim = message.mentions.users.first();
    message.delete();
    discrim.sendMessage(discrim.username + " you have been warned in General Gaming, reason: " + msg);
