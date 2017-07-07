@@ -280,6 +280,18 @@ bot.on('message', message => {
   if (message.content === prefix + 'spam') {
     message.channel.sendFile('img/spam.png');
   }
+    if (message.content.startsWith('gg!warn')) {
+  if((message.author.id === config.ownerID) || (message.author.id === config.owner2ID) || (message.author.id === config.owner3ID)) {
+   var msg = message.content.replace("gg!warn", "");
+   let discrim = message.mentions.users.first();
+   message.delete();
+   discrim.sendMessage(discrim.username + " you have been warned in General Gaming, reason: " + msg);
+   message.channel.sendMessage("User has been **successfuly** warned!");
+   console.log(message.author.username + " tried to execute in General Gaming gg!warn and it successfuly warned the user: " + discrim.username + " with the reason: " + msg);
+       } else {
+      message.reply('You arent the owner of the bot to do that!');
+      console.log(message.author.username + " tried to execute in General Gaming gg!warn but it failed.")
+    }
 
 });
 bot.login(config.token);
