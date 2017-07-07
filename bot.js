@@ -242,6 +242,8 @@ bot.on('message', message => {
       'http://i.imgur.com/5dNlLf6.jpg',
       'http://i.imgur.com/ZABeZC8.jpg',
       'http://i.imgur.com/BDvkS64.jpg'
+
+
       ];
       var answer = answers[Math.floor(Math.random() * answers.length)];
     message.channel.sendMessage(answer);
@@ -290,6 +292,9 @@ bot.on('message', message => {
       message.reply('You arent the owner of the bot to do that!');
       console.log(message.author.username + " tried to execute in General Gaming gg!warn but it failed.")
     }
+         if (message.content === 'abcdefghijklmnopqrstuvwxyz') {
+    message.reply(" just earned the achievement `The Alphabet` :confetti_ball: ");
   }
+
 });
 bot.login(config.token);
