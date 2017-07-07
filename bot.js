@@ -58,70 +58,7 @@ bot.on('message', message => {
           message.edit("The Lords of memes have pinged you... // " + Math.round(endTime - startTime) + " ms");
       });
   }
-  /**if (cleverON) {
-        clever.ask(message, function (err, response) {
-            message.channel.sendMessage({
-                message: response
-            });
-        });
-    }**/
-
-    /**if (commandIs("cleverbot", message)) {
-      if (args.length === 1) {
-        message.channel.sendMessage("```Incorrect Syntax! Command usage: mb!cleverbot <on | off>```")
-      } else if ((args.length === 2) && (message = 'on')) {
-        cleverON = true;
-      } else if ((args.length === 2) && (message = 'on')) {
-        cleverON = false;
-      } else {
-        message.channel.sendMessage("```Incorrect Syntax! Command usage: mb!cleverbot <on | off>```")
-      }
-    }**/
-    //This command is broken. lolno
-   /**if (commandIs("notifydev", message)) {
-    if(args.length === 1){
-        message.channel.sendMessage('Send a message to the Developers (Dont abuse or get blacklisted.) : ``mb!notifydev <message>``')
-      } else {
-        bot.sendMessage('302432701108191232', message)
-        message.channel.sendMessage('Message sent to Developer.')
-      }
-   }**/
-
-   /**if (message.content.startsWith('mb!play')) {
-     vidurl = message.content.replace("mb!play", "");
-     if (!args[1]) {
-        message.channel.sendMessage("```Please Proide a Youtube Link!```");
-        return;
-     }
-     if (!message.member.voiceChannel) {
-       message.channel.sendMessage("You aren't in a voice channel ._.");
-       return;
-     }
-     if (!servers[message.guild.id]) servers[message.guild.id] = {
-       queue: []
-     }
-     var server = servers[message.guild.id];
-
-     if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-        play(connection, vidurl);
-     });
-   }
-
-   if (commandIs('skip', message)){
-     if(args[1]) {
-       var server = servers[message.guild.id];
-
-       if (server.dispatcher) server.dispatcher.end();
-     }
-   }
-   if (commandIs('stop', message)) {
-     var server = servers[message.guild.id];
-
-     if (message.guild.voiceConnection){
-       message.guild.voiceConnection.disconnect();
-     }
-   }**/
-
+ 
 
 //Setgame Command
    if (message.content.startsWith('mb!setgame')) {
@@ -285,7 +222,7 @@ bot.on('message', message => {
    var msg = message.content.replace("mb!warn", "");
    let discrim = message.mentions.users.first();
    message.delete();
-   discrim.sendMessage(discrim.username + " you have been warned in "+ Server.name+ ", reason: " + msg);
+   discrim.sendMessage(discrim.username + " you have been warned in "+ Guild.server.name+ ", reason: " + msg);
    message.channel.sendMessage("User has been **successfuly** warned!");
    console.log(message.author.username + " tried to execute in General Gaming mb!warn and it successfuly warned the user: " + discrim.username + " with the reason: " + msg);
        } else {
